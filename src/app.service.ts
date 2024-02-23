@@ -8,24 +8,28 @@ import { MaintenanceTaskDto } from './dtos/maintenanceTask.dto';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello World!';
+    return 'REST-API using Nest.js ';
   }
 
   constructor(@InjectModel('Vehicle') private vehicleModel: Model<IVehicle>) {}
 
+  //Read All
   async getAllVehicles(): Promise<IVehicle[]> {
     return this.vehicleModel.find();
   }
 
+  //Read by ID
   async getVehicleById(id: string): Promise<IVehicle | null> {
     return this.vehicleModel.findById(id);
   }
 
+  //Create
   async addVehicle(vehicle_dto: VehicleDto): Promise<IVehicle> {
     const newVehicle = new this.vehicleModel(vehicle_dto);
     return newVehicle.save();
   }
 
+  //Delete
   async deleteVehicle(registrationNumber: string): Promise<any> {
     const result = await this.vehicleModel.deleteOne({ registrationNumber });
     if (result.deletedCount === 0) {
@@ -35,6 +39,7 @@ export class AppService {
     }
   }
 
+  //Update
   async updateVehicle(
     registrationNumber: string,
     vehicle_dto: VehicleDto,

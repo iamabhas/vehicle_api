@@ -14,4 +14,10 @@ export class AuthController {
       throw new UnauthorizedException('Authentication failed');
     }
   }
+
+  @Post('logout')
+  logout(): any {
+    this.authService.logout();
+    return { message: 'User Logged out !' };
+  }
 }

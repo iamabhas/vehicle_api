@@ -4,21 +4,16 @@ import {
   ExecutionContext,
   UnauthorizedException,
 } from '@nestjs/common';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService) {}
+
   canActivate(context: ExecutionContext): boolean {
-    const request = context.switchToHttp().getRequest();
-    const user = request.headers['auth-user'];
-    if (!user) {
-      throw new UnauthorizedException('No user available !');
+    if (!this.authService.isAdminLoggedIn()) {
+      throw new UnauthorizedException('Admin not logged in!');
     }
-
-    const isAuthenticated = user === 'admin';
-    if (!isAuthenticated) {
-      throw new UnauthorizedException('User not authenticated !');
-    }
-
-    return isAuthenticated;
+    return true;
   }
 }
