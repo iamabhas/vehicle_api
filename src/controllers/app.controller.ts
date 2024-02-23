@@ -7,11 +7,13 @@ import {
   HttpException,
   Delete,
   Param,
+  UseGuards,
 } from '@nestjs/common';
 import { AppService } from '../app.service';
 import { VehicleDto } from 'src/dtos/vehicle.dto';
 import { IVehicle } from 'src/models/vehicles.model';
 import { MaintenanceTaskDto } from 'src/dtos/maintenanceTask.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller()
 export class AppController {
@@ -23,6 +25,7 @@ export class AppController {
   }
 
   @Get('/get-all-vehicles')
+  @UseGuards(AuthGuard)
   async getAllVehicles(): Promise<IVehicle[]> {
     const vehicles = await this.appService.getAllVehicles();
     if (!vehicles) {
@@ -32,6 +35,7 @@ export class AppController {
   }
 
   @Get('/get-vehicle/:id')
+  @UseGuards(AuthGuard)
   async getVehicleById(@Param('id') id: string): Promise<IVehicle> {
     const vehicle = await this.appService.getVehicleById(id);
     if (!vehicle) {
@@ -41,6 +45,7 @@ export class AppController {
   }
 
   @Post('/add-vehicle')
+  @UseGuards(AuthGuard)
   async addVehicle(@Body() vehicle_dto: VehicleDto): Promise<any> {
     try {
       const newVehicle = await this.appService.addVehicle(vehicle_dto);
@@ -63,6 +68,7 @@ export class AppController {
   }
 
   @Delete('/delete-vehicle/:registrationNum')
+  @UseGuards(AuthGuard)
   async deleteVehicle(
     @Param('registrationNum') registrationNum: string,
   ): Promise<any> {
@@ -71,6 +77,7 @@ export class AppController {
   }
 
   @Post('/update-vehicle/:registrationNum')
+  @UseGuards(AuthGuard)
   async updateVehicle(
     @Param('registrationNum') registrationNum: string,
     @Body() vehicle_dto: VehicleDto,
@@ -79,6 +86,7 @@ export class AppController {
   }
 
   @Post('/assign-driver/:registrationNum')
+  @UseGuards(AuthGuard)
   async assignDriver(
     @Param('registrationNum') registrationNum: string,
     @Body('driver') driver: string,
@@ -90,6 +98,7 @@ export class AppController {
   }
 
   @Post('/maintenance-task/:registrationNum')
+  @UseGuards(AuthGuard)
   async manageMaintenanceTask(
     @Param('registrationNum') registrationNum: string,
     @Body() taskDto: MaintenanceTaskDto,
