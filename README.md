@@ -62,6 +62,16 @@ The collection contains all necessary endpoints for performing CRUD operations o
 
 6. **Logout** : You can also logout.
 
+### If the collection doesn't show routes after import , here are the routes :
+- Log in : `http://localhost:5000/auth/login`
+- Create V\vehicle : `http://localhost:5000/add-vehicle`
+- Read all vehicles : `http://localhost:5000/get-all-vehicles`
+- Read single vehicle : `http://localhost:5000/get-vehicle/:id`
+- Update vehicle : `http://localhost:5000/update-vehicle/:registrationNumber`
+- Assign Driver : `http://localhost:5000/assign-driver/:registrationNumber`
+- Manage maintenance task : `http://localhost:5000/maintenance-task/:registrationNumber`
+- Delete Vehicle : `http://localhost:5000/delete-vehicle/:registrationNumber`
+- Log out : `http://localhost:5000/auth/logout`
 
 By following these steps in order , you'll be able to test the full CRUD functionality of the Vehicle API using the imported Postman collection.
 
