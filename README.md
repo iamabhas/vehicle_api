@@ -24,7 +24,7 @@ $ npm run start
 ```
 
 
-# API Testing with Postman or any other tool of your choice
+# API Testing with Postman 
 
 This guide will help you import the Vehicle API Postman collection and test secured CRUD endpoints for managing vehicles. Ensure you follow the steps in order to test the endpoints effectively.
 
