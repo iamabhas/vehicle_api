@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "22cdc5ff-fb3d-454b-bd34-2ddb4aa4222b",
+		"name": "VehicleAPITesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26225275",
+		"_collection_link": "https://winter-star-924865.postman.co/workspace/Team-Workspace~1d2c98e6-03ac-4036-8d82-83c97dc432a1/collection/26225275-22cdc5ff-fb3d-454b-bd34-2ddb4aa4222b?action=share&source=collection_link&creator=26225275"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"make\": \"Toyota\",\r\n  \"vehicleModel\": \"Model 1\",\r\n  \"year\": 2022,\r\n  \"registrationNumber\": \"ABC123\",\r\n  \"currentStatus\": \"Active\",\r\n  \"location\": \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/add-vehicle/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/get-all-vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Vehicle by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/get-vehicle/65d95b5a8c2fd1e1c94646c5"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"make\": \"Toyota\",\r\n  \"vehicleModel\": \"Model 1\",\r\n  \"year\": 2021,\r\n  \"registrationNumber\": \"ABC123\",\r\n  \"currentStatus\": \"Active\",\r\n  \"location\": \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/update-vehicle/ABC123"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Driver",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"driver\":\"John\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/assign-driver/ABC123"
+			},
+			"response": []
+		},
+		{
+			"name": "Maintenance Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"currentStatus\":\"Under Maintenance\",\r\n  \"maintenanceTask\":\"Wheels Repair\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/maintenance-task/ABC123"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vehicle",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5000/delete-vehicle/ABC123"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:5000/auth/logout"
+			},
+			"response": []
+		}
+	]
+}
